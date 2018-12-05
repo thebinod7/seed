@@ -1,0 +1,903 @@
+<div id="home-slider" class="tp-pad-pos">
+    <div class="container">
+        <div class="row">
+            <div class="container-fluid">
+                <div class="col-sm-9 header-top-right">
+                    <div class="header-top-right-wapper">
+                        <div class="homeslider">
+                            <div class="content-slide">
+                               <% if(homeSlider.length) { %>
+                                 <ul id="contenhomeslider">
+                                    <% homeSlider.forEach(function(item) { %>
+                                      <% if(item.subcategory) { %>
+                                        <li><a href="/products/category/<%= item.category.categoryName %>/subcat/<%= item.subcategory%>"><img class="banner-img" alt="Everestkart" src="<%= assets%>/800x300/<%= item.bannerImage %>" /></a></li>
+                                      <% } else { %>
+                                        <li><a href="/products/offers/<%= item.category.categoryName %>?param=<%= item.parameter %>"><img class="banner-img" alt="Everestkart" src="<%= assets%>/800x300/<%= item.bannerImage %>" /></a></li>
+                                     <% } %>
+                                     <% }); %>
+                                 </ul>
+                                <% } else { %>
+                                <ul id="contenhomeslider">
+                                    <li><img alt="Everestkart" src="/assets/data/option7/banner.jpg" title="Funky roots" /></li>
+                                    <li><img alt="Everestkart" src="/assets/data/option7/banner3.jpg" title="Funky roots" /></li>
+                                    <li><img alt="Everestkart" src="/assets/data/option7/banner.jpg" title="Funky roots" /></li>
+                                </ul>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3 slider-left">
+                    <div class="row">
+                        <ul class="list-banner">
+                            <li>
+                                <a href="#">
+                                    <img src="/assets/images/s8.png" alt="Service">
+                                    <span>Xpress Delivery</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#">
+                                    <img src="/assets/images/s2.png" alt="Service">
+                                    <span>24/7 Help Center</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#">
+                                    <img src="/assets/images/s4.png" alt="Service">
+                                    <span>Exchange & Refund</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#">
+                                    <img src="/assets/images/s3.png" alt="Service">
+                                    <span>shop with confidence</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END Home slideder-->
+
+<!-- Hot deals -->
+<% if(hotDeals.length) { %>
+    <div class="hot-deals-row">
+        <div class="container">
+            <div class="hot-deals-box">
+                <div class="row">
+                    <div class="col-sm-12 col-md-2 col-lg-2 htdls-hm-crcls">
+                        <div class="hot-deals-tab">
+                            <div class="ev-hot-deals-title">
+                                <span>hot</span>
+                                <span class="yellow">deals</span>
+                            </div>
+                            <div class="ev-hot-deals-tab-box">
+                              <ul class="countdown">
+                                  <li>
+                                  <div class="cnt_txt_hldr">
+                                      <span class="days num_tx">00</span>
+                                      <p class="days_ref ref_txt">Days</p>
+                                  </div>
+                                  </li>
+                                  <li>
+                                  <div class="cnt_txt_hldr">
+                                      <span class="hours num_tx">00</span>
+                                      <p class="hours_ref ref_txt">Hours</p>
+                                  </div>
+                                  </li>
+                                  <li>
+                                  <div class="cnt_txt_hldr">
+                                      <span class="minutes num_tx">00</span>
+                                      <p class="minutes_ref ref_txt">Min</p>
+                                  </div>
+                                  </li>
+                                  <li>
+                                  <div class="cnt_txt_hldr">
+                                      <span class="seconds last num_tx">00</span>
+                                      <p class="seconds_ref ref_txt">Sec</p>
+                                  </div>
+                                  </li>
+                              </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-10 col-lg-10 hot-deals-tab-content-col">
+                        <div class="products-hotdeals">
+                            <div class="ev-hotdeals owl-carousel">
+                              <% hotDeals.forEach(function(item) { %>
+                                <div class="item">
+                                    <div class="product hotdeals-p">
+                                        <div class="product-container">
+                                            <div class="product-image image-thumb">
+                                                <a target="_blank" href="/products/view/<%= item.slug %>"><img src="<%= assets %>/370x360/<%= item.featuredImg %>" alt="Product"></a>
+                                            </div>
+                                            <div class="product-info">
+                                                <h5 class="product-name"><a target="_blank" href="/products/view/<%= item.slug %>"><%= item.title %></a></h5>
+                                                <div class="box-price">
+                                                  <% if(item.discount > 0 ) { %>
+                                                    <span class="product-price">Rs. <%= nepaliCurrency(item.afterDiscount) %></span>
+                                                    <span class="old-price">Rs. <%= nepaliCurrency(item.price) %></span>
+                                                  <% } else { %>
+                                                    <span class="product-price">Rs. <%= nepaliCurrency(item.price) %></span>
+                                                  <% } %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                              <% }); %>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+<% } %>
+<!-- END Hot deals -->
+
+    <!-- top banner -->
+    <!-- <div class="group-banner4">
+        <div class="container">
+            <ul class="list-banner">
+                <li>
+                    <div class="banner-opacity">
+                        <a href="#"><img src="/assets/data/option7/b1.jpg" alt="Banner"></a>
+                    </div>
+                </li>
+                <li>
+                    <div class="banner-opacity">
+                        <a href="#"><img src="/assets/data/option7/b2.jpg" alt="Banner"></a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div> -->
+    <!-- ./top banner -->
+
+    <!-- box product electronic -->
+    <% if(foodsCat) { %>
+    <div class="box-products electronic">
+        <div class="container">
+            <div class="box-product-head b--electronic">
+                <div class="box-product-head-left">
+                    <div class="box-title">
+                        <span class="icon"><i class="fa fa-cutlery" aria-hidden="true"></i></span>
+                        <span class="text">Foods</span>
+                    </div>
+                </div>
+                <div class="box-product-head-right">
+                    <ul class="box-tabs foods-tabs nav-tab tbmnus-itms-desk">
+                        <p style="display:none;"><%= foodsCat.categoryName %></p>
+                        <li class="active"><a class="foods-flag" data-toggle="tab" href="#tab-new-foods">New Arrivals</a></li>
+                        <li><a class="foods-flag" data-toggle="tab" href="#tab-featured-foods">Featured</a></li>
+                        <li><a class="foods-flag" data-toggle="tab" href="#tab-sale-foods">Sale</a></li>
+                    </ul>
+                    <!-- responsive tab menu for mobile -->
+                    <ul class="nav nav-tabs foods-tabs nav-tabs-responsive tbmnus-itms-mob" role="tablist">
+                        <li class="active">
+                            <a href="#tab-new-foods" role="tab" data-toggle="tab" aria-expanded="true">
+                                <span class="text foods-flag">New Arrivals</span>
+                            </a>
+                        </li>
+                        <li class="next">
+                            <a href="#tab-featured-foods" role="tab" data-toggle="tab">
+                                <span class="text foods-flag">Featured</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#tab-sale-foods" role="tab" data-toggle="tab">
+                                <span class="text foods-flag">Sale</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- responsive tab menu for mobile -->
+                    <div id="elevator-3" class="floor-elevator">
+                        <a href="#elevator-2" class="btn-elevator up fa fa-angle-up"></a>
+                        <a href="#elevator-4" class="btn-elevator down fa fa-angle-down"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="box-produts-content">
+                <div class="block-product-left">
+                    <div class="block-sub-cat owl-carousel" data-items="1" data-nav="true" data-loop="true" data-dots="false">
+                      <% if(foodsCat.subcategories.length) { %>
+                        <ul class="list-cat">
+                          <% foodsCat.subcategories.slice(0,14).forEach(function(item,i) { %>
+                            <li><a href="/products/category/<%= foodsCat.categoryName %>/subcat/<%= item %>"><%= formatter.name(item) %></a></li>
+                          <% }); %>
+                        </ul>
+                        <ul class="list-cat">
+                          <% foodsCat.subcategories.slice(14,28).forEach(function(item,i) { %>
+                            <li><a href="/products/category/<%= foodsCat.categoryName %>/subcat/<%= item %>"><%= formatter.name(item) %></a></li>
+                          <% }); %>
+                        </ul>
+                      <% } %>
+                    </div>
+                    <div class="block-box-products-banner banner-img">
+                      <% if(foodsCat) { %>
+                        <a href="/products/category/<%= foodsCat.categoryName %>"><img class="category-thumbnail" src="<%= assets %>/370x360/<%= foodsCat.bannerImage %>" alt="Banner"></a>
+                      <% } else { %>
+                        <a href="/"><img class="category-thumbnail" src="/assets/data/option7/b3.jpg" alt="Banner"></a>
+                      <% } %>
+                    </div>
+                </div>
+                <div class="block-product-right">
+                    <div class="tab-container">
+                        <div id="tab-new-foods" class="tab-panel active">
+                          <div class="ev-products-wrapper">
+                            <% if(foods.length) { %>
+                              <div class="ev-products-wrapper">
+                                <% foods.forEach(function(item,i){ %>
+                                  <% if( i >= 12) return; %>
+                                  <div class="col-md-3 col-sm-6 ev-mb-v-prdlst">
+                                      <div class="row">
+                                          <div class="ev-pr-single products">
+                                              <a target="_blank" href="/products/view/<%= item.slug %>">
+                                                  <div class="ev-pr-top">
+                                                      <img src="<%= assets %>/370x360/<%= item.featuredImg %>">
+                                                      <span class="status-new"></span>
+                                                  </div>
+                                                  <div class="ev-pr-bottom">
+                                                      <h4 class="ellipsis"><a target="_blank" href="/products/view/<%= item.slug %>"><%= item.title %></a></h4>
+                                                      <% if(item.discount > 0) { %>
+                                                        <span class="pr-newprice">Rs.<%= nepaliCurrency(item.afterDiscount) %></span>
+                                                        <span class="pr-oldprice">Rs.<%= nepaliCurrency(item.price) %></span>
+                                                      <% } else { %>
+                                                        <span class="pr-newprice">Rs.<%= nepaliCurrency(item.price) %></span>
+                                                      <% } %>
+                                                  </div>
+                                              </a>
+                                          </div>
+                                      </div>
+                                  </div>
+                                <% }); %>
+                                <div class="clearfix"></div>
+                              </div>
+                              <% } else { %>
+                                <p> We are adding an item here. </p>
+                              <% } %>
+                              <div class="clearfix"></div>
+                          </div>
+                        </div>
+                        <div id="tab-featured-foods" class="tab-panel">
+                          <div class="ev-products-wrapper">
+                              <div class="foods-featured-list">
+
+                              </div>
+                            <div class="clearfix"></div>
+                          </div>
+                        </div>
+                        <div id="tab-sale-foods" class="tab-panel">
+                          <div class="ev-products-wrapper">
+                              <div class="foods-sale-list">
+
+                              </div>
+                            <div class="clearfix"></div>
+                          </div>
+                        </div>
+                        <div class="col-md-12 mob-btn-catlst-pglnk">
+                            <div class="row">
+                                <div class="mob-viewmr-prdlst">
+                                    <a href="/products/category/<%= foodsCat.categoryName %>">View More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% } %>
+    <!-- ./box product foods -->
+
+
+    <!-- box product Grocery -->
+    <% if(groceryCat) { %>
+    <div class="box-products sports right">
+        <div class="container">
+            <div class="box-product-head">
+                <div class="box-product-head-left">
+                    <div class="box-title">
+                        <span class="icon"><i class="fa fa-credit-card" aria-hidden="true"></i></span>
+                        <span class="text">Grocery</span>
+                    </div>
+                </div>
+                <div class="box-product-head-right">
+                    <ul class="box-tabs grocery-tabs nav-tab tbmnus-itms-desk">
+                        <p style="display:none;"><%= groceryCat.categoryName %></p>
+                        <li class="active"><a class="grocery-flag" data-toggle="tab" href="#tab-new-grocery">New Arrivals</a></li>
+                        <li><a class="grocery-flag" data-toggle="tab" href="#tab-featured-grocery">Featured</a></li>
+                        <li><a class="grocery-flag" data-toggle="tab" href="#tab-sale-grocery">Sale</a></li>
+                    </ul>
+                    <!-- responsive tab menu for mobile -->
+                    <ul class="nav nav-tabs grocery-tabs nav-tabs-responsive tbmnus-itms-mob" role="tablist">
+                        <li class="active">
+                            <a href="#tab-new-grocery" role="tab" data-toggle="tab" aria-expanded="true">
+                                <span class="text grocery-flag">New Arrivals</span>
+                            </a>
+                        </li>
+                        <li class="next">
+                            <a href="#tab-featured-grocery" role="tab" data-toggle="tab">
+                                <span class="text grocery-flag">Featured</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#tab-discount-grocery" role="tab" data-toggle="tab">
+                                <span class="text grocery-flag">Sale</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- responsive tab menu for mobile -->
+                    <div id="elevator-2" class="floor-elevator">
+                        <a href="#elevator-1" class="btn-elevator up fa fa-angle-up"></a>
+                        <a href="#elevator-3" class="btn-elevator down fa fa-angle-down"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="box-produts-content">
+                <div class="block-product-left">
+                    <div class="block-sub-cat owl-carousel" data-items="1" data-nav="true" data-loop="true" data-dots="false">
+                      <% if(groceryCat.subcategories.length) { %>
+                        <ul class="list-cat">
+                          <% groceryCat.subcategories.slice(0,14).forEach(function(item,i) { %>
+                            <li><a href="/products/category/<%= groceryCat.categoryName %>/subcat/<%= item %>"><%= formatter.name(item) %></a></li>
+                          <% }); %>
+                        </ul>
+                        <ul class="list-cat">
+                          <% groceryCat.subcategories.slice(14,28).forEach(function(item,i) { %>
+                            <li><a href="/products/category/<%= groceryCat.categoryName %>/subcat/<%= item %>"><%= formatter.name(item) %></a></li>
+                          <% }); %>
+                        </ul>
+                      <% } %>
+                    </div>
+                    <div class="block-box-products-banner banner-img">
+                      <% if(groceryCat) { %>
+                        <a href="/products/category/<%= groceryCat.categoryName %>"><img class="category-thumbnail" src="<%= assets %>/370x360/<%= groceryCat.bannerImage %>" alt="Banner"></a>
+                      <% } else { %>
+                        <a href="/"><img class="category-thumbnail" src="/assets/data/option7/b3.jpg" alt="Banner"></a>
+                      <% } %>
+                    </div>
+                </div>
+                <div class="block-product-right">
+                    <div class="tab-container">
+                        <div id="tab-new-grocery" class="tab-panel active">
+                            <div class="ev-products-wrapper">
+                              <% if(grocery.length) { %>
+                                <div class="ev-products-wrapper">
+                                  <% grocery.forEach(function(item,i){ %>
+                                    <% if( i >= 12) return; %>
+                                    <div class="col-md-3 col-sm-6 ev-mb-v-prdlst">
+                                        <div class="row">
+                                            <div class="ev-pr-single products">
+                                                <a target="_blank" href="/products/view/<%= item.slug %>">
+                                                    <div class="ev-pr-top">
+                                                        <img src="<%= assets %>/370x360/<%= item.featuredImg %>">
+                                                        <span class="status-new"></span>
+                                                    </div>
+                                                    <div class="ev-pr-bottom">
+                                                        <h4 class="ellipsis"><a target="_blank" href="/products/view/<%= item.slug %>"><%= item.title %></a></h4>
+                                                        <% if(item.discount > 0) { %>
+                                                          <span class="pr-newprice">Rs.<%= nepaliCurrency(item.afterDiscount) %></span>
+                                                          <span class="pr-oldprice">Rs.<%= nepaliCurrency(item.price) %></span>
+                                                        <% } else { %>
+                                                          <span class="pr-newprice">Rs.<%= nepaliCurrency(item.price) %></span>
+                                                        <% } %>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  <% }); %>
+                                  <div class="clearfix"></div>
+                                </div>
+                              <% } else { %>
+                                <p> We are adding an item here. </p>
+                              <% } %>
+
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        <div id="tab-featured-grocery" class="tab-panel">
+                            <div class="ev-products-wrapper">
+                              <div class="grocery-featured-list">
+
+                              </div>
+                              <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        <div id="tab-sale-grocery" class="tab-panel">
+                            <div class="ev-products-wrapper">
+                              <div class="grocery-sale-list">
+
+                              </div>
+
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 mob-btn-catlst-pglnk">
+                            <div class="row">
+                                <div class="mob-viewmr-prdlst">
+                                    <a href="/products/category/<%= groceryCat.categoryName %>">View More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% } %>
+    <!-- ./box product sports -->
+
+    <!-- box product electronic -->
+    <% if(electronicsCat) { %>
+    <div class="box-products fashion">
+        <div class="container">
+            <div class="box-product-head b--electronic">
+                <div class="box-product-head-left">
+                    <div class="box-title">
+                        <span class="icon"><i class="fa fa-laptop" aria-hidden="true"></i></span>
+                        <span class="text">computer & electronics</span>
+                    </div>
+                </div>
+                <div class="box-product-head-right">
+                    <ul class="box-tabs electronics-tabs nav-tab tbmnus-itms-desk">
+                        <p style="display:none;"><%= electronicsCat.categoryName %></p>
+                        <li class="active"><a class="electronics-flag" data-toggle="tab" href="#tab-new-electronics">New Arrivals</a></li>
+                        <li><a class="electronics-flag" data-toggle="tab" href="#tab-featured-electronics">Featured</a></li>
+                        <li><a class="electronics-flag" data-toggle="tab" href="#tab-sale-electronics">Sale</a></li>
+                    </ul>
+                    <!-- responsive tab menu for mobile -->
+                    <ul class="nav nav-tabs electronics-tabs nav-tabs-responsive tbmnus-itms-mob" role="tablist">
+                        <li class="active">
+                            <a href="#tab-new-electronics" role="tab" data-toggle="tab" aria-expanded="true">
+                                <span class="text electronics-flag">New Arrivals</span>
+                            </a>
+                        </li>
+                        <li class="next">
+                            <a href="#tab-featured-electronics" role="tab" data-toggle="tab">
+                                <span class="text electronics-flag">Featured</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#tab-sale-electronics" role="tab" data-toggle="tab">
+                                <span class="text electronics-flag">Sale</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- responsive tab menu for mobile -->
+                    <div id="elevator-3" class="floor-elevator">
+                        <a href="#elevator-2" class="btn-elevator up fa fa-angle-up"></a>
+                        <a href="#elevator-4" class="btn-elevator down fa fa-angle-down"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="box-produts-content">
+                <div class="block-product-left">
+                    <div class="block-sub-cat owl-carousel" data-items="1" data-nav="true" data-loop="true" data-dots="false">
+                      <% if(electronicsCat.subcategories.length) { %>
+                        <ul class="list-cat">
+                          <% electronicsCat.subcategories.slice(0,14).forEach(function(item,i) { %>
+                            <li><a href="/products/category/<%= electronicsCat.categoryName %>/subcat/<%= item %>"><%= formatter.name(item) %></a></li>
+                          <% }); %>
+                        </ul>
+                        <ul class="list-cat">
+                          <% electronicsCat.subcategories.slice(14,28).forEach(function(item,i) { %>
+                            <li><a href="/products/category/<%= electronicsCat.categoryName %>/subcat/<%= item %>"><%= formatter.name(item) %></a></li>
+                          <% }); %>
+                        </ul>
+                      <% } %>
+                    </div>
+                    <div class="block-box-products-banner">
+                      <% if(electronicsCat) { %>
+                        <a href="/products/category/<%= electronicsCat.categoryName %>"><img src="<%= assets %>/370x360/<%= electronicsCat.bannerImage %>" alt="Banner"></a>
+                      <% } else { %>
+                        <a href="/"><img class="category-thumbnail" src="/assets/data/option7/b3.jpg" alt="Banner"></a>
+                      <% } %>
+                    </div>
+                </div>
+                <div class="block-product-right">
+                    <div class="tab-container">
+                        <div id="tab-new-electronics" class="tab-panel active">
+                          <div class="ev-products-wrapper">
+                            <% if(electronics.length) { %>
+                              <div class="ev-products-wrapper">
+                                <% electronics.forEach(function(item,i){ %>
+                                  <% if( i >= 12) return; %>
+                                  <div class="col-md-3 col-sm-6 ev-mb-v-prdlst">
+                                      <div class="row">
+                                          <div class="ev-pr-single products">
+                                              <a target="_blank" href="/products/view/<%= item.slug %>">
+                                                  <div class="ev-pr-top">
+                                                      <img src="<%= assets %>/370x360/<%= item.featuredImg %>">
+                                                      <span class="status-new"></span>
+                                                  </div>
+                                                  <div class="ev-pr-bottom">
+                                                      <h4 class="ellipsis"><a target="_blank" href="/products/view/<%= item.slug %>"><%= item.title %></a></h4>
+                                                      <% if(item.discount > 0) { %>
+                                                        <span class="pr-newprice">Rs.<%= nepaliCurrency(item.afterDiscount) %></span>
+                                                        <span class="pr-oldprice">Rs.<%= nepaliCurrency(item.price) %></span>
+                                                      <% } else { %>
+                                                        <span class="pr-newprice">Rs.<%= nepaliCurrency(item.price) %></span>
+                                                      <% } %>
+                                                  </div>
+                                              </a>
+                                          </div>
+                                      </div>
+                                  </div>
+                                <% }); %>
+                                <div class="clearfix"></div>
+                              </div>
+                              <% } else { %>
+                                <p> We are adding an item here. </p>
+                              <% } %>
+                              <div class="clearfix"></div>
+                          </div>
+                        </div>
+                        <div id="tab-featured-electronics" class="tab-panel">
+                          <div class="ev-products-wrapper">
+                              <div class="electronics-featured-list">
+
+                              </div>
+                            <div class="clearfix"></div>
+                          </div>
+                        </div>
+                        <div id="tab-sale-electronics" class="tab-panel">
+                          <div class="ev-products-wrapper">
+                              <div class="electronics-sale-list">
+
+                              </div>
+                            <div class="clearfix"></div>
+                          </div>
+                        </div>
+                        <div class="col-md-12 mob-btn-catlst-pglnk">
+                            <div class="row">
+                                <div class="mob-viewmr-prdlst">
+                                    <a href="/products/category/<%= electronicsCat.categoryName %>">View More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% } %>
+    <!-- ./box product electronic -->
+
+
+    <!-- box product Men -->
+  <% if(menCat) { %>
+    <div class="box-products digital right">
+        <div class="container">
+            <div class="box-product-head">
+                <div class="box-product-head-left">
+                    <div class="box-title">
+                        <span class="icon"><i class="fa fa-male" aria-hidden="true"></i></span>
+                        <span class="text">Men's</span>
+                    </div>
+                </div>
+                <div class="box-product-head-right">
+                    <ul class="box-tabs men-tabs nav-tab tbmnus-itms-desk">
+                        <p style="display:none;"><%= menCat.categoryName %></p>
+                        <li class="active"><a class="men-flag" data-toggle="tab" href="#tab-new-men">New Arrivals</a></li>
+                        <li><a class="men-flag" data-toggle="tab" href="#tab-featured-men">Featured</a></li>
+                        <li><a class="men-flag" data-toggle="tab" href="#tab-sale-men">Sale</a></li>
+                    </ul>
+                    <!-- responsive tab menu for mobile -->
+                    <ul class="nav nav-tabs men-tabs nav-tabs-responsive tbmnus-itms-mob" role="tablist">
+                        <li class="active">
+                            <a href="#tab-new-men" role="tab" data-toggle="tab" aria-expanded="true">
+                                <span class="text men-flag">New Arrivals</span>
+                            </a>
+                        </li>
+                        <li class="next">
+                            <a href="#tab-featured-men" role="tab" data-toggle="tab">
+                                <span class="text men-flag">Featured</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#tab-discount-men" role="tab" data-toggle="tab">
+                                <span class="text men-flag">Sale</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- responsive tab menu for mobile -->
+                    <div id="elevator-4" class="floor-elevator">
+                        <a href="#elevator-3" class="btn-elevator up fa fa-angle-up"></a>
+                        <a href="#elevator-5" class="btn-elevator down fa fa-angle-down"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="box-produts-content">
+                <div class="block-product-left">
+                    <div class="block-sub-cat owl-carousel" data-items="1" data-nav="true" data-loop="true" data-dots="false">
+                      <% if(menCat.subcategories.length) { %>
+                        <ul class="list-cat">
+                          <% menCat.subcategories.slice(0,14).forEach(function(item,i) { %>
+                            <li><a href="/products/category/<%= menCat.categoryName %>/subcat/<%= item %>"><%= formatter.name(item) %></a></li>
+                          <% }); %>
+                        </ul>
+                        <ul class="list-cat">
+                          <% menCat.subcategories.slice(14,28).forEach(function(item,i) { %>
+                            <li><a href="/products/category/<%= menCat.categoryName %>/subcat/<%= item %>"><%= formatter.name(item) %></a></li>
+                          <% }); %>
+                        </ul>
+                      <% } %>
+                    </div>
+                    <div class="block-box-products-banner banner-img">
+                      <% if(menCat) { %>
+                        <a href="/products/category/<%= menCat.categoryName %>"><img class="category-thumbnail" src="<%= assets %>/370x360/<%= menCat.bannerImage %>" alt="Banner"></a>
+                      <% } else { %>
+                        <a href="/"><img class="category-thumbnail" src="/assets/data/option7/b3.jpg" alt="Banner"></a>
+                      <% } %>
+                    </div>
+                </div>
+                <div class="block-product-right">
+                    <div class="tab-container">
+                        <div id="tab-new-men" class="tab-panel active">
+                          <div class="ev-products-wrapper">
+                            <% if(men.length) { %>
+                              <div class="ev-products-wrapper">
+                                <% men.forEach(function(item,i){ %>
+                                  <% if( i >= 12) return; %>
+                                  <div class="col-md-3 col-sm-6 ev-mb-v-prdlst">
+                                      <div class="row">
+                                          <div class="ev-pr-single products">
+                                              <a target="_blank" href="/products/view/<%= item.slug %>">
+                                                  <div class="ev-pr-top">
+                                                      <img src="<%= assets %>/370x360/<%= item.featuredImg %>">
+                                                      <span class="status-new"></span>
+                                                  </div>
+                                                  <div class="ev-pr-bottom">
+                                                      <h4 class="ellipsis"><a target="_blank" href="/products/view/<%= item.slug %>"><%= item.title %></a></h4>
+                                                      <% if(item.discount > 0) { %>
+                                                        <span class="pr-newprice">Rs.<%= nepaliCurrency(item.afterDiscount) %></span>
+                                                        <span class="pr-oldprice">Rs.<%= nepaliCurrency(item.price) %></span>
+                                                      <% } else { %>
+                                                        <span class="pr-newprice">Rs.<%= nepaliCurrency(item.price) %></span>
+                                                      <% } %>
+                                                  </div>
+                                              </a>
+                                          </div>
+                                      </div>
+                                  </div>
+                                <% }); %>
+                                <div class="clearfix"></div>
+                              </div>
+                              <% } else { %>
+                                <p> We are adding an item here. </p>
+                              <% } %>
+                              <div class="clearfix"></div>
+                          </div>
+                        </div>
+                        <div id="tab-featured-men" class="tab-panel">
+                          <div class="ev-products-wrapper">
+                              <div class="men-featured-list">
+
+                              </div>
+                            <div class="clearfix"></div>
+                          </div>
+                        </div>
+                        <div id="tab-sale-men" class="tab-panel">
+                          <div class="ev-products-wrapper">
+                              <div class="men-sale-list">
+
+                              </div>
+                            <div class="clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="col-md-12 mob-btn-catlst-pglnk">
+                            <div class="row">
+                                <div class="mob-viewmr-prdlst">
+                                    <a href="/product/category/<%= menCat.categoryName %>">View More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% } %>
+    <!-- ./box product Men -->
+
+
+    <!-- box product women -->
+    <% if(womenCat) { %>
+    <div class="box-products furniture">
+        <div class="container">
+            <div class="box-product-head">
+                <div class="box-product-head-left">
+                    <div class="box-title">
+                        <span class="icon"><i class="fa fa-female" aria-hidden="true"></i></span>
+                        <span class="text">women's</span>
+                    </div>
+                </div>
+                <div class="box-product-head-right">
+                    <ul class="box-tabs women-tabs nav-tab tbmnus-itms-desk">
+                        <p style="display:none;"><%= womenCat.categoryName %></p>
+                        <li class="active"><a class="women-flag" data-toggle="tab" href="#tab-new-women">New Arrivals</a></li>
+                        <li><a class="women-flag" data-toggle="tab" href="#tab-featured-women">Featured</a></li>
+                        <li><a class="women-flag" data-toggle="tab" href="#tab-sale-women">Sale</a></li>
+                    </ul>
+                    <!-- responsive tab menu for mobile -->
+                    <ul class="nav nav-tabs women-tabs nav-tabs-responsive tbmnus-itms-mob" role="tablist">
+                        <li class="active">
+                            <a href="#tab-new-women" role="tab" data-toggle="tab" aria-expanded="true">
+                                <span class="text women-flag">New Arrivals</span>
+                            </a>
+                        </li>
+                        <li class="next">
+                            <a href="#tab-featured-women" role="tab" data-toggle="tab">
+                                <span class="text women-flag">Featured</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#tab-discount-women" role="tab" data-toggle="tab">
+                                <span class="text women-flag">Sale</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- responsive tab menu for mobile -->
+                    <div id="elevator-5" class="floor-elevator">
+                        <a href="#elevator-4" class="btn-elevator up fa fa-angle-up"></a>
+                        <a href="#elevator-6" class="btn-elevator down fa fa-angle-down"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="box-produts-content">
+                <div class="block-product-left">
+                    <div class="block-sub-cat owl-carousel" data-items="1" data-nav="true" data-loop="true" data-dots="false">
+                      <% if(womenCat.subcategories.length) { %>
+                        <ul class="list-cat">
+                          <% womenCat.subcategories.slice(0,14).forEach(function(item,i) { %>
+                            <li><a href="/products/category/<%= womenCat.categoryName %>/subcat/<%= item %>"><%= formatter.name(item) %></a></li>
+                          <% }); %>
+                        </ul>
+                        <ul class="list-cat">
+                          <% womenCat.subcategories.slice(14,28).forEach(function(item,i) { %>
+                            <li><a href="/products/category/<%= womenCat.categoryName %>/subcat/<%= item %>"><%= formatter.name(item) %></a></li>
+                          <% }); %>
+                        </ul>
+                      <% } %>
+                    </div>
+                    <div class="block-box-products-banner banner-img">
+                      <% if(womenCat) { %>
+                        <a href="/products/category/<%= womenCat.categoryName %>"><img class="category-thumbnail" src="<%= assets %>/370x360/<%= womenCat.bannerImage %>" alt="Banner"></a>
+                      <% } else { %>
+                        <a href="/"><img class="category-thumbnail" src="/assets/data/option7/b3.jpg" alt="Banner"></a>
+                      <% } %>
+                    </div>
+                </div>
+                <div class="block-product-right">
+                    <div class="tab-container">
+                        <div id="tab-new-women" class="tab-panel active">
+                          <div class="ev-products-wrapper">
+                            <% if(women.length) { %>
+                              <div class="ev-products-wrapper">
+                                <% women.forEach(function(item,i){ %>
+                                  <% if( i >= 12) return; %>
+                                  <div class="col-md-3 col-sm-6 ev-mb-v-prdlst">
+                                      <div class="row">
+                                          <div class="ev-pr-single products">
+                                              <a target="_blank" href="/products/view/<%= item.slug %>">
+                                                  <div class="ev-pr-top">
+                                                      <img src="<%= assets %>/370x360/<%= item.featuredImg %>">
+                                                      <span class="status-new"></span>
+                                                  </div>
+                                                  <div class="ev-pr-bottom">
+                                                      <h4 class="ellipsis"><a target="_blank" href="/products/view/<%= item.slug %>"><%= item.title %></a></h4>
+                                                      <% if(item.discount > 0) { %>
+                                                        <span class="pr-newprice">Rs.<%= nepaliCurrency(item.afterDiscount) %></span>
+                                                        <span class="pr-oldprice">Rs.<%= nepaliCurrency(item.price) %></span>
+                                                      <% } else { %>
+                                                        <span class="pr-newprice">Rs.<%= nepaliCurrency(item.price) %></span>
+                                                      <% } %>
+                                                  </div>
+                                              </a>
+                                          </div>
+                                      </div>
+                                  </div>
+                                <% }); %>
+                                <div class="clearfix"></div>
+                              </div>
+                              <% } else { %>
+                                <p> We are adding an item here. </p>
+                              <% } %>
+                              <div class="clearfix"></div>
+                          </div>
+                        </div>
+                        <div id="tab-featured-women" class="tab-panel">
+                          <div class="ev-products-wrapper">
+                              <div class="women-featured-list">
+
+                              </div>
+                            <div class="clearfix"></div>
+                          </div>
+                        </div>
+                        <div id="tab-sale-women" class="tab-panel">
+                          <div class="ev-products-wrapper">
+                              <div class="women-sale-list">
+
+                              </div>
+                            <div class="clearfix"></div>
+                          </div>
+                        </div>
+                        <div class="col-md-12 mob-btn-catlst-pglnk">
+                            <div class="row">
+                                <div class="mob-viewmr-prdlst">
+                                    <a href="/products/category/<%= womenCat.categoryName %>">View More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% } %>
+    <!-- ./box product women -->
+</div>
+
+<script src="/assets/js/utils.js"></script>
+<script src="/assets/js/pages/home.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.downCount.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.countdown').downCount({
+            date: '12/10/2018 14:00:00',
+            offset: +1
+        });
+        $(".ev-hotdeals").owlCarousel({
+            //  autoplay:true,
+            // autoplayTimeout: 4000,
+            items: 5,
+            slideBy: 5,
+            loop: true, // Inifnity loop. Duplicate last and first items to get loop illusion.
+            navRewind: false, // Go to first/last.
+            nav: true,
+            margin: 15,
+            navText: ['<i class="fa fa-angle-left" aria-hidden="true"></i>', '<i class="fa fa-angle-right" aria-hidden="true"></i>'],
+            pagination: false,
+            autoHeight: true,
+            itemsDesktop: [1199, 3],
+            itemsDesktopSmall: [979, 3],
+            // dotClass: 'owl-page',
+            // animateOut: 'fadeOut',
+            // animateIn: 'fadeIn',
+            autoplayHoverPause: true, //false
+            lazyLoad: false, // IMG need special markup class="lazyOwl" and data-src="url_to_img" or/and data-src-retina="url_to_highres_img"
+            dots: false, // true
+            responsiveClass: false,
+            responsive: {
+                0: {
+                    items: 1,
+
+                },
+                600: {
+                    items: 3,
+
+                },
+                1000: {
+                    items: 5,
+                    loop: true,
+
+                }
+            }
+
+        });
+
+    });
+</script>

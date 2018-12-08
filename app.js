@@ -5,7 +5,6 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const expressLayouts = require('express-ejs-layouts');
 const session = require('express-session');
-const flash = require('express-flash');
 const mongoose = require('mongoose');
 
 
@@ -38,16 +37,6 @@ app.use(expressLayouts);
 app.set('layout', 'layouts/default');
 app.set('layout extractScripts', true);
 
-//Production
-app.use(session({
-  secret: process.env.SECRET_KEY,
-  resave: false,
-  saveUninitialized: true,
-  store: new RedisStore
-}));
-
-app.use(flash());
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -57,26 +46,37 @@ app.use(express.static(path.join(__dirname, 'public')));
 // ROUTES FOR OUR API
 app.use('/', require('./routes'));
 
-// catch 404 and forward to error handler
+/// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  if(process.env.NODE_ENV === 'dev'){
+    var err = new Error("Not Found");
+    err.status = 404;
     next(err);
-  } else {
-    res.render('errors/404');
-  }
 });
 
-// error handler
+// development error handler
+// will print stacktrace
+if (process.env.NODE_ENV === "dev") {
+    app.use(function(err, req, res, next) {
+        res.status(err.status || 500);
+        res.json({
+            message: err.message,
+            success: false,
+            data: err.data,
+            error: err
+        });
+    });
+}
+
+// production error handler
+// no stacktraces leaked to user
 app.use(function(err, req, res, next) {
-  if(process.env.NODE_ENV === 'dev'){
-    res.locals.error = err;
     res.status(err.status || 500);
-    res.render('errors/error');
-  } else {
-    res.render('errors/5xx');
-  }
+    res.json({
+        message: err.message,
+        success: false,
+        data: err.data,
+        error: {}
+    });
 });
 
 

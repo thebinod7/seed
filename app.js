@@ -7,7 +7,6 @@ const expressLayouts = require('express-ejs-layouts');
 const session = require('express-session');
 const mongoose = require('mongoose');
 
-
 mongoose.Promise = global.Promise;
 const options = { server: {
     reconnectTries: Number.MAX_VALUE,
